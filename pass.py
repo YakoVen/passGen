@@ -2,6 +2,17 @@ from progress.bar import Bar
 from time import sleep
 from colorama import init ,Fore ,Style
 
+
+print("   1) costume inpute \n 2) wordlist combinition     ")
+
+method= input("method choose :")
+
+
+minletters=0
+maxletters=100
+
+
+
 t = input(" input a word : ")
 words=[]
 passwords =[]
@@ -50,11 +61,24 @@ def add_values():
 def count_results():
     return len(passwords)
 
+
+
+
+
+
+
+
+
 y="y"
 
-while t!="" :
-    words.append(t)
-    t=input(" next one : ->")
+if method=="1":
+    while t!="" :
+        words.append(t.replace(" ",""))
+        t=input(" next one : ->")
+else:
+    wrdlist = open(input(" what wordlist you wanna use :"),"r")
+    for line in wrdlist.readlines():
+        words.append(line.replace(" ","").replace("\n",""))
 
 if input("  wanna add comon pass ??? y/n")==y:
     print(f"{Fore.RED}Ok{Style.RESET_ALL}")
@@ -70,9 +94,12 @@ if input("  wanna a third part ??? y/n")==y:
 if input("  wanna add combinison word/num ??? y/n")==y:
     print(f"{Fore.RED}OK {Style.RESET_ALL}")
     addnumber()
-fil =open("pass.lst","w")
+fil =open(input("select output file name : ")+".pass","w")
+minletters=int(input("add the min length of the pass word"))
+maxletters =int(input("add the max length of the pass word"))
 for a in passwords:
-   fil.write(str(a)+"\n") 
+    if len(a) > minletters and len(a) < maxletters :
+        fil.write(str(a)+"\n") 
 print(f""" {Fore.RED}Results {Style.RESET_ALL}
 kayen {count_results()} mdps !
 
