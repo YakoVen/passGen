@@ -3,6 +3,10 @@ from time import sleep
 from colorama import init ,Fore ,Style
 
 
+
+
+print(f"{Fore.GREEN}New Version H00_Ven 0.0.2   {Style.RESET_ALL}\n\n\n")
+
 print("   1) costume inpute \n 2) wordlist combinition     ")
 
 method= input("method choose :")
